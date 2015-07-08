@@ -2,11 +2,13 @@
 This project was built using the PHP web framework, CodeIgniter.
 
 My Files (files I coded):
-mymusic.sql
-application/controller/home.php
-application/views/homepage.php
-application/views/report.php
+
+mymusic.sql,
+application/controller/home.php,
+application/views/homepage.php,
+application/views/report.php,
 application/models/user_dl.php
+
 
 
 ###################
