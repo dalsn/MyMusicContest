@@ -9,6 +9,7 @@ application/views/homepage.php,
 application/views/report.php,
 application/models/user_dl.php
 
+To run, copy the entire repository to a folder in the root directory of a PHP server.
 
 
 ###################
