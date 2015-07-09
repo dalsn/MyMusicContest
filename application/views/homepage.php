@@ -1,7 +1,6 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-$msg = $this->session->userdata('uploadmsg');
+	$msg = $this->session->userdata('uploadmsg');
 ?>
 
 <!DOCTYPE html>
