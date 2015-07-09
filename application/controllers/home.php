@@ -1,4 +1,5 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends CI_Controller {
 
@@ -212,9 +213,6 @@ class Home extends CI_Controller {
     	$selectdate = $this->input->post('selectdate');
 
     	$date = ($selectdate == 1 ? 'expiry_date' : 'dl_date');
-
-    	$datefrom = date('Y-m-d', strtotime($datefrom));
-    	$dateto = date('Y-m-d', strtotime($dateto));
 
     	$records = $this->user_dl->getByDate($date, $datefrom, $dateto);
 
