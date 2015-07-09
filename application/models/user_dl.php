@@ -8,6 +8,42 @@
 			parent::__construct();
 		}
 
+		function create_table()
+		{
+
+			$sql = "CREATE TABLE IF NOT EXISTS dl_report (
+						id int(11) NOT NULL PRIMARY KEY,
+						track_id int(11) NOT NULL,
+						ip_address varchar(20) DEFAULT NULL,
+						expiry_date datetime DEFAULT NULL,
+						transaction_id int(11) NOT NULL,
+						dl_status varchar(30) NOT NULL,
+						dl_source varchar(30) DEFAULT NULL,
+						dl_type varchar(30) NOT NULL,
+						dl_date datetime NOT NULL
+					)";
+
+			try{
+				$query = $this->db->query($sql);
+			} catch(Exception $e){
+				throw $e;
+			}
+			
+		}
+
+		function drop_table()
+		{
+
+			$sql = "DROP TABLE IF EXISTS dl_report";
+
+			try{
+				$query = $this->db->query($sql);
+			} catch(Exception $e){
+				throw $e;
+			}
+
+		}
+
 		function add($id, $track_id, $ip_address, $expiry_date, $transaction_id, $dl_status, $dl_source, $dl_type, $dl_date)
 		{
 
