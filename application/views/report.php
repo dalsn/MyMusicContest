@@ -43,7 +43,7 @@
 					<label for="date2">To</label>
 					<input type="text" class="form-control" id="date2" placeholder="dd-mm-yyyy" name="date2">
 				</div>
-				<button type="submit" class="btn btn-default">Get >></button>
+				<button type="submit" class="btn btn-default">Go >></button>
 				<br><br>
 			</form>
 	        <div class="table-responsive">
