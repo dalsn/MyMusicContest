@@ -11,6 +11,8 @@ application/models/user_dl.php
 
 To run, copy the entire repository to a folder (MyMusicContest) in the root directory of a PHP server.
 
+To configure database connection, go into application/config/database.php. Then set hostname, username, password and database accordingly.
+
 
 ###################
 What is CodeIgniter
