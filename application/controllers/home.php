@@ -17,6 +17,8 @@ class Home extends CI_Controller {
 
 		//load models
 		$this->load->model('user_dl');
+		
+		$this->user_dl->create_table();
 
 		$msg = null;
 
