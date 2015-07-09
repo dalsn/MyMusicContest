@@ -28,7 +28,7 @@
 			} catch(Exception $e){
 				throw $e;
 			}
-			
+
 		}
 
 		function drop_table()
@@ -104,8 +104,17 @@
 
 		function getByDate($date, $datefrom, $dateto)
 		{
+			if (!empty($datefrom) && !empty($dateto)) {
 
-			$sql = "SELECT * FROM dl_report WHERE $date >= '$datefrom' AND $date <= '$dateto' ORDER BY $date DESC";
+				$datefrom = date('Y-m-d', strtotime($datefrom));
+    			$dateto = date('Y-m-d', strtotime($dateto));
+				$sql = "SELECT * FROM dl_report WHERE $date >= '$datefrom' AND $date <= '$dateto' ORDER BY $date DESC";
+
+			}else{
+
+				$sql = "SELECT * FROM dl_report ORDER BY $date DESC";
+
+			}
 
 			try{
 				$query = $this->db->query($sql);
