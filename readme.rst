@@ -13,6 +13,8 @@ To run, copy the entire repository to a folder (MyMusicContest) in the root dire
 
 To configure database connection, go into application/config/database.php. Then set hostname, username, password and database accordingly.
 
+Getting started with CodeIgniter? - http://goo.gl/FQId
+
 
 ###################
 What is CodeIgniter
