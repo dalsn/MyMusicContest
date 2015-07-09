@@ -60,43 +60,68 @@ class Home extends CI_Controller {
 		}
 
 	}
-
-	private function parse_file($p_Filepath, $p_NamedFields = true) 
+ 
+ 	private function parse_file($p_Filepath, $p_NamedFields = true) 
 	{
-
-	    $separator = ',';
-	    $max_row_size = 4096;
-
-        $content = false;
-        $file = fopen($p_Filepath, 'r');
-        if($p_NamedFields) {
-            $fields = fgetcsv($file, $max_row_size, $separator);
-        }
-        while( ($row = fgetcsv($file, $max_row_size, $separator)) != false ) {            
-            if( $row[0] != null ) {
-                if( !$content ) {
-                    $content = array();
-                }
-                if( $p_NamedFields ) {
-                    $items = array();
-
-                    // I prefer to fill the array with values of defined fields
-                    foreach( $fields as $id => $field ) {
-                        if( isset($row[$id]) ) {
-                            $items[$field] = $row[$id];    
-                        }
-                    }
-                    $content[] = $items;
-                } else {
-                    $content[] = $row;
-                }
-            }
-        }
-
-        fclose($file);
-        return $content;
-
-    }
+	/** 
+		Allow you to retrieve a CSV file content as a two dimensional array.
+		Optionally, the first text line may contain the column names to
+		be used to retrieve field values (default).
+		
+		Let's consider the following CSV formatted data:
+		
+		  "col1";"col2";"col3"
+		      "11";"12";"13"
+		      "21;"22;"2;3"
+		 
+		 It's returned as follow by the parsing operation with first line
+		 used to name fields:
+		         Array(
+		             [0] => Array(
+		                     [col1] => 11,
+		                     [col2] => 12,
+		                    [col3] => 13
+		             	     )
+		             [1] => Array(
+		                     [col1] => 21,
+		                     [col2] => 22,
+		                     [col3] => 2;3
+		             	    )
+		       	   )
+		@author		Pierre-Jean Turpeau
+		@link		http://www.codeigniter.com/wiki/CSVReader 
+	*/
+	
+		$separator = ',';
+		$max_row_size = 4096;
+	
+	        $content = false;
+	        $file = fopen($p_Filepath, 'r');
+	        if($p_NamedFields) {
+	            $fields = fgetcsv($file, $max_row_size, $separator);
+	        }
+	        while( ($row = fgetcsv($file, $max_row_size, $separator)) != false ) {            
+	            if( $row[0] != null ) {
+	                if( !$content ) {
+	                    $content = array();
+	                }
+	                if( $p_NamedFields ) {
+	                    $items = array();
+	
+	                    foreach( $fields as $id => $field ) {
+	                        if( isset($row[$id]) ) {
+	                            $items[$field] = $row[$id];    
+	                        }
+	                    }
+	                    $content[] = $items;
+	                } else {
+	                    $content[] = $row;
+	                }
+	            }
+	        }
+	        fclose($file);
+	        return $content;
+	}
 
     function save_to_database($filename)
     {
